@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvilliaDDD.Communication.Mediator
+namespace InvilliaDDD.Core.Communication.Mediator
 {
     public interface IMediatorHandler
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace InvilliaDDD.Communication
+namespace InvilliaDDD.Core.Communication
 {
     public class ResponseResult
     {

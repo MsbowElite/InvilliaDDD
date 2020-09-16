@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System;
 
-namespace InvilliaDDD.Messages
+namespace InvilliaDDD.Core.Messages
 {
     public abstract class EventMessage : Message, INotification
     {

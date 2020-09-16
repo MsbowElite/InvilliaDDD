@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace InvilliaDDD.HttpServices
+namespace InvilliaDDD.Games.Domain
 {
     public class Class1
     {

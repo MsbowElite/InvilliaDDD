@@ -1,9 +1,9 @@
-﻿using InvilliaDDD.DomainObjects;
+﻿using InvilliaDDD.Core.DomainObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace InvilliaDDD.Data
+namespace InvilliaDDD.Core.Data
 {
     public interface IRepository<T> : IDisposable
         where T : IAggregateRoot

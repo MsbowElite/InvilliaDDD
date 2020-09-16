@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace InvilliaDDD.Communication
+namespace InvilliaDDD.Core.Communication
 {
     public class ResponseErrorMessages
     {

@@ -1,9 +1,9 @@
 ﻿using FluentValidation.Results;
-using InvilliaDDD.Communication.Mediator;
-using InvilliaDDD.Data;
+using InvilliaDDD.Core.Communication.Mediator;
+using InvilliaDDD.Core.Data;
 using System.Threading.Tasks;
 
-namespace InvilliaDDD.Messages
+namespace InvilliaDDD.Core.Messages
 {
     public abstract class CommandHandler
     {

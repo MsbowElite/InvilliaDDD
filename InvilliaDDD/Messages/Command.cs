@@ -2,7 +2,7 @@
 using FluentValidation.Results;
 using MediatR;
 
-namespace InvilliaDDD.Messages
+namespace InvilliaDDD.Core.Messages
 {
     public class Command : Message, IRequest<ValidationResult>
     {

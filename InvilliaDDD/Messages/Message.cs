@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace InvilliaDDD.Messages
+namespace InvilliaDDD.Core.Messages
 {
     public abstract class Message
     {
