@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace InvilliaDDD.Games.API.Controllers
+namespace InvilliaDDD.GameManager.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]

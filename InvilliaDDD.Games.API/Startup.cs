@@ -1,11 +1,11 @@
-using InvilliaDDD.Games.API.Configurations;
+using InvilliaDDD.GameManager.API.Configurations;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace InvilliaDDD.Games.API
+namespace InvilliaDDD.GameManager.API
 {
     public class Startup
     {

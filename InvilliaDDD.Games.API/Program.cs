@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace InvilliaDDD.Games.API
+namespace InvilliaDDD.GameManager.API
 {
     public class Program
     {

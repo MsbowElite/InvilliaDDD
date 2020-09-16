@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace InvilliaDDD.Games.API.Configurations
+namespace InvilliaDDD.GameManager.API.Configurations
 {
     public static class ApiConfiguration
     {
