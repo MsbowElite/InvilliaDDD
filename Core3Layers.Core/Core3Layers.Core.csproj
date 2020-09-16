@@ -1,9 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AssemblyName>Core3Layers.Core</AssemblyName>
-    <RootNamespace>Core3Layers.Core</RootNamespace>
-  </PropertyGroup>
-
-</Project>
