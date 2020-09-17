@@ -1,7 +1,7 @@
 ﻿using System;
 using FluentValidation;
 
-namespace InvilliaDDD.GameManager.Domain.Commands.Game.Validations
+namespace InvilliaDDD.GameManager.Domain.Commands.Games.Validations
 {
     public abstract class GameValidation<T> : AbstractValidator<T> where T : GameCommand
     {

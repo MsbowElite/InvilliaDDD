@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace InvilliaDDD.GameManager.Domain.Commands.Game
+namespace InvilliaDDD.GameManager.Domain.Commands.Games
 {
     public class GameCommand : Command
     {

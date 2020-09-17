@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using FluentValidation.Results;
 using InvilliaDDD.Core.Communication;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
@@ -11,18 +11,18 @@ namespace InvilliaDDD.WebApi.Core.Controllers
     [ApiController]
     public abstract class BaseController : Controller
     {
-        protected ICollection<string> Erros = new List<string>();
+        protected ICollection<string> Errors = new List<string>();
 
         protected ActionResult CustomResponse(object result = null)
         {
-            if (OperacaoValida())
+            if (ValidOperation())
             {
                 return Ok(result);
             }
 
             return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
             {
-                { "Mensagens", Erros.ToArray() }
+                { "Mensagens", Errors.ToArray() }
             }));
         }
 
@@ -56,29 +56,29 @@ namespace InvilliaDDD.WebApi.Core.Controllers
 
         protected bool ResponsePossuiErros(ResponseResult resposta)
         {
-            if (resposta == null || !resposta.Errors.Mensagens.Any()) return false;
+            if (resposta == null || !resposta.Errors.Messages.Any()) return false;
 
-            foreach (var mensagem in resposta.Errors.Mensagens)
+            foreach (var message in resposta.Errors.Messages)
             {
-                AdicionarErroProcessamento(mensagem);
+                AdicionarErroProcessamento(message);
             }
 
             return true;
         }
 
-        protected bool OperacaoValida()
+        protected bool ValidOperation()
         {
-            return !Erros.Any();
+            return !Errors.Any();
         }
 
         protected void AdicionarErroProcessamento(string erro)
         {
-            Erros.Add(erro);
+            Errors.Add(erro);
         }
 
         protected void LimparErrosProcessamento()
         {
-            Erros.Clear();
+            Errors.Clear();
         }
     }
 }

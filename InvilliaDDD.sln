@@ -31,19 +31,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameManager", "GameManager"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BBA598CB-C323-4681-9101-BCD7677998DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvilliaDDD.GameManager.API", "InvilliaDDD.Games.API\InvilliaDDD.GameManager.API.csproj", "{4A8AADAC-4344-4F2E-ABCE-0F93551FFA8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvilliaDDD.GameManager.API", "InvilliaDDD.Games.API\InvilliaDDD.GameManager.API.csproj", "{4A8AADAC-4344-4F2E-ABCE-0F93551FFA8C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identities", "Identities", "{D93BE5E2-42CF-4D84-BA1A-368DBE4427FC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{D93BE5E2-42CF-4D84-BA1A-368DBE4427FC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9F64E685-AA0E-4F6F-897E-63154DC341FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvilliaDDD.Identity.API", "InvilliaDDD.Identity.API\InvilliaDDD.Identity.API.csproj", "{FA167BFF-F289-4EF0-B803-471C60AC8B07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvilliaDDD.Identity.API", "InvilliaDDD.Identity.API\InvilliaDDD.Identity.API.csproj", "{FA167BFF-F289-4EF0-B803-471C60AC8B07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvilliaDDD.GameManager.Application", "InvilliaDDD.Games.Application\InvilliaDDD.GameManager.Application.csproj", "{1E08094B-AE56-4184-BD9E-EFA04DB0C900}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvilliaDDD.GameManager.Application", "InvilliaDDD.Games.Application\InvilliaDDD.GameManager.Application.csproj", "{1E08094B-AE56-4184-BD9E-EFA04DB0C900}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvilliaDDD.GameManager.Data", "InvilliaDDD.Data\InvilliaDDD.GameManager.Data.csproj", "{4C349196-1434-4596-A047-C342DA07B158}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvilliaDDD.GameManager.Data", "InvilliaDDD.Data\InvilliaDDD.GameManager.Data.csproj", "{4C349196-1434-4596-A047-C342DA07B158}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvilliaDDD.GameManager.Domain", "InvilliaDDD.Games.Domain\InvilliaDDD.GameManager.Domain.csproj", "{2E7435DA-347C-4253-A2C0-DAA059F7F8DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvilliaDDD.GameManager.Domain", "InvilliaDDD.Games.Domain\InvilliaDDD.GameManager.Domain.csproj", "{2E7435DA-347C-4253-A2C0-DAA059F7F8DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

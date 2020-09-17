@@ -6,9 +6,14 @@ namespace InvilliaDDD.GameManager.Domain.Entities
 {
     public partial class Game : Entity, IAggregateRoot
     {
+        public Game(Guid id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+
+        protected Game() { }
+
         public string Name { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
-        public DateTime? DeletedAt { get; set; }
     }
 }

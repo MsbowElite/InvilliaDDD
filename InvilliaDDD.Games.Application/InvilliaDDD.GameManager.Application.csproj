@@ -7,8 +7,16 @@
   <ItemGroup>
     <Folder Include="Commands\Game\" />
     <Folder Include="Commands\User\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="9.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InvilliaDDD.Games.Domain\InvilliaDDD.GameManager.Domain.csproj" />
+    <ProjectReference Include="..\InvilliaDDD\InvilliaDDD.Core.csproj" />
   </ItemGroup>
 
 </Project>

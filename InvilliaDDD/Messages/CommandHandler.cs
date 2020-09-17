@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using InvilliaDDD.Core.Communication.Mediator;
 using InvilliaDDD.Core.Data;
+using InvilliaDDD.Core.Data.Interfaces;
 using System.Threading.Tasks;
 
 namespace InvilliaDDD.Core.Messages
@@ -17,16 +18,16 @@ namespace InvilliaDDD.Core.Messages
 
         protected IMediatorHandler MediatorHandler { get; private set; }
 
-        protected void AdicionarErro(string mensagem)
+        protected void AddError(string mensagem)
         {
             ValidationResult.Errors.Add(new ValidationFailure(string.Empty, mensagem));
         }
 
-        protected async Task<ValidationResult> PersistirDados(IUnitOfWork unitOfWork)
+        protected async Task<ValidationResult> Commit(IUnitOfWork unitOfWork)
         {
             if (!await unitOfWork?.Commit())
             {
-                AdicionarErro("An error persisting the data occurred");
+                AddError("An error persisting the data occurred");
             }
 
             return ValidationResult;

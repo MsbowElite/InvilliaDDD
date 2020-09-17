@@ -8,5 +8,10 @@
     <PackageReference Include="MediatR" Version="8.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\InvilliaDDD.Games.Application\InvilliaDDD.GameManager.Application.csproj" />
+    <ProjectReference Include="..\InvilliaDDD.WebApi.Core\InvilliaDDD.WebApi.Core.csproj" />
+  </ItemGroup>
+
 
 </Project>

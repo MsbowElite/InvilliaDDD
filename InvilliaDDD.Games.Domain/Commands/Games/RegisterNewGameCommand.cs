@@ -1,8 +1,9 @@
-﻿using System;
+﻿using InvilliaDDD.GameManager.Domain.Commands.Games.Validations;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace InvilliaDDD.GameManager.Domain.Commands.Game
+namespace InvilliaDDD.GameManager.Domain.Commands.Games
 {
     public class RegisterNewGameCommand : GameCommand
     {
@@ -14,7 +15,7 @@ namespace InvilliaDDD.GameManager.Domain.Commands.Game
 
         public override bool IsValid()
         {
-            ValidationResult = new RegisterNewCustomerCommandValidation().Validate(this);
+            ValidationResult = new RegisterNewGameCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }
