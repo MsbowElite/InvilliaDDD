@@ -8,4 +8,8 @@
     <Folder Include="NewFolder\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\InvilliaDDD\InvilliaDDD.Core.csproj" />
+  </ItemGroup>
+
 </Project>

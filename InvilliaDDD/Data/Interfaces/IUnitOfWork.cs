@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace InvilliaDDD.Core.Data
+namespace InvilliaDDD.Core.Data.Interfaces
 {
     public interface IUnitOfWork
     {
