@@ -5,11 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="8.1.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.6.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.6.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.6.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InvilliaDDD.Data\InvilliaDDD.GameManager.Data.csproj" />
     <ProjectReference Include="..\InvilliaDDD.Games.Application\InvilliaDDD.GameManager.Application.csproj" />
+    <ProjectReference Include="..\InvilliaDDD.Games.Domain\InvilliaDDD.GameManager.Domain.csproj" />
     <ProjectReference Include="..\InvilliaDDD.WebApi.Core\InvilliaDDD.WebApi.Core.csproj" />
   </ItemGroup>
 

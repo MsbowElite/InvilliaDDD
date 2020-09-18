@@ -22,7 +22,7 @@ namespace InvilliaDDD.WebApi.Core.Controllers
 
             return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
             {
-                { "Mensagens", Errors.ToArray() }
+                { "Messages", Errors.ToArray() }
             }));
         }
 
@@ -31,7 +31,7 @@ namespace InvilliaDDD.WebApi.Core.Controllers
             var erros = modelState.Values.SelectMany(e => e.Errors);
             foreach (var erro in erros)
             {
-                AdicionarErroProcessamento(erro.ErrorMessage);
+                AddError(erro.ErrorMessage);
             }
 
             return CustomResponse();
@@ -41,26 +41,26 @@ namespace InvilliaDDD.WebApi.Core.Controllers
         {
             foreach (var erro in validationResult.Errors)
             {
-                AdicionarErroProcessamento(erro.ErrorMessage);
+                AddError(erro.ErrorMessage);
             }
 
             return CustomResponse();
         }
 
-        protected ActionResult CustomResponse(ResponseResult resposta)
+        protected ActionResult CustomResponse(ResponseResult responseResult)
         {
-            ResponsePossuiErros(resposta);
+            ResponsePossuiErros(responseResult);
 
             return CustomResponse();
         }
 
-        protected bool ResponsePossuiErros(ResponseResult resposta)
+        protected bool ResponsePossuiErros(ResponseResult responseResult)
         {
-            if (resposta == null || !resposta.Errors.Messages.Any()) return false;
+            if (responseResult == null || !responseResult.Errors.Messages.Any()) return false;
 
-            foreach (var message in resposta.Errors.Messages)
+            foreach (var message in responseResult.Errors.Messages)
             {
-                AdicionarErroProcessamento(message);
+                AddError(message);
             }
 
             return true;
@@ -71,9 +71,9 @@ namespace InvilliaDDD.WebApi.Core.Controllers
             return !Errors.Any();
         }
 
-        protected void AdicionarErroProcessamento(string erro)
+        protected void AddError(string error)
         {
-            Errors.Add(erro);
+            Errors.Add(error);
         }
 
         protected void LimparErrosProcessamento()

@@ -12,8 +12,6 @@ namespace InvilliaDDD.GameManager.Data.Repository
 {
     public class GameRepository : RepositoryBase<Game>, IGameRepository
     {
-        public IUnitOfWork UnitOfWork => throw new NotImplementedException();
-
         public GameRepository(GameManagerContext applicationDbContext)
     : base(applicationDbContext)
         {

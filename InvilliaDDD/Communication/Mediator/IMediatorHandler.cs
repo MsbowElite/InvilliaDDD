@@ -9,7 +9,6 @@ namespace InvilliaDDD.Core.Communication.Mediator
 {
     public interface IMediatorHandler
     {
-        Task PublishEvent<T>(T @event) where T : EventMessage;
         Task<ValidationResult> SendCommand<T>(T command) where T : Command;
     }
 }

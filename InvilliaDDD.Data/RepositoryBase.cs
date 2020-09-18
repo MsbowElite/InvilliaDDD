@@ -20,6 +20,8 @@ namespace InvilliaDDD.Core.Data
             _applicationDbContext = applicationDbContext;
         }
 
+        public IUnitOfWork UnitOfWork => _applicationDbContext;
+
         public IQueryable<T> ListAll()
         {
             return _applicationDbContext.Set<T>();

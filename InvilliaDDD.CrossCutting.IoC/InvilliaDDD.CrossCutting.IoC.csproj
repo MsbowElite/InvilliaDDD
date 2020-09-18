@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InvilliaDDD.Data\InvilliaDDD.GameManager.Data.csproj" />
+    <ProjectReference Include="..\InvilliaDDD.Games.Application\InvilliaDDD.GameManager.Application.csproj" />
+    <ProjectReference Include="..\InvilliaDDD\InvilliaDDD.Core.csproj" />
+  </ItemGroup>
+
+</Project>

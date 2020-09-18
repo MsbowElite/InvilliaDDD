@@ -19,11 +19,21 @@ namespace InvilliaDDD.GameManager.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiConfiguration(Configuration);
+
+            services.AddSwaggerConfiguration();
+
+            services.AddAutoMapperConfiguration();
+
+            services.AddMediatR(typeof(Startup));
+
+            services.RegisterServices();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseApiConfiguration(env);
+
+            app.UseSwaggerSetup();
         }
     }
 }

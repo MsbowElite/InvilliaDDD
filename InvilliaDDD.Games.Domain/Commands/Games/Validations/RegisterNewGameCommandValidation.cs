@@ -9,7 +9,6 @@ namespace InvilliaDDD.GameManager.Domain.Commands.Games.Validations
         public RegisterNewGameCommandValidation()
         {
             ValidateName();
-            ValidateId();
         }
     }
 }
