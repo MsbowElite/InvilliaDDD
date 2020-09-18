@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using InvilliaDDD.Core.Communication;
 using InvilliaDDD.Core.Communication.Mediator;
 using InvilliaDDD.GameManager.Application.Interfaces;
 using InvilliaDDD.GameManager.Application.Services;
@@ -35,9 +36,9 @@ namespace InvilliaDDD.GameManager.API.Configurations
         {
             services.AddScoped<IGameAppService, GameAppService>();
 
-            services.AddScoped<IRequestHandler<RegisterNewGameCommand, ValidationResult>, GameCommandHandler>();
-            services.AddScoped<IRequestHandler<UpdateGameCommand, ValidationResult>, GameCommandHandler>();
-            services.AddScoped<IRequestHandler<DeleteGameCommand, ValidationResult>, GameCommandHandler>();
+            services.AddScoped<IRequestHandler<RegisterNewGameCommand, ResponseResult>, GameCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateGameCommand, ResponseResult>, GameCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteGameCommand, ResponseResult>, GameCommandHandler>();
 
             services.AddScoped<IGameRepository, GameRepository>();
         }

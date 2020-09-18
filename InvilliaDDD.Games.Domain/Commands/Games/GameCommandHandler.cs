@@ -7,13 +7,14 @@ using System.Threading;
 using System;
 using InvilliaDDD.GameManager.Domain.Entities;
 using InvilliaDDD.Core.Communication.Mediator;
+using InvilliaDDD.Core.Communication;
 
 namespace InvilliaDDD.GameManager.Domain.Commands.Games
 {
     public class GameCommandHandler : CommandHandler,
-        IRequestHandler<RegisterNewGameCommand, ValidationResult>,
-        IRequestHandler<UpdateGameCommand, ValidationResult>,
-        IRequestHandler<DeleteGameCommand, ValidationResult>
+        IRequestHandler<RegisterNewGameCommand, ResponseResult>,
+        IRequestHandler<UpdateGameCommand, ResponseResult>,
+        IRequestHandler<DeleteGameCommand, ResponseResult>
     {
         private readonly IGameRepository _gameRepository;
 
@@ -23,9 +24,9 @@ namespace InvilliaDDD.GameManager.Domain.Commands.Games
             _gameRepository = gameRepository;
         }
 
-        public async Task<ValidationResult> Handle(RegisterNewGameCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(RegisterNewGameCommand request, CancellationToken cancellationToken)
         {
-            if (!request.IsValid()) return request.ValidationResult;
+            if (!request.IsValid()) return request.ResponseResult;
 
             var game = new Game(Guid.NewGuid(), request.Name);
 
@@ -34,9 +35,9 @@ namespace InvilliaDDD.GameManager.Domain.Commands.Games
             return await Commit(_gameRepository.UnitOfWork);
         }
 
-        public async Task<ValidationResult> Handle(UpdateGameCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(UpdateGameCommand request, CancellationToken cancellationToken)
         {
-            if (!request.IsValid()) return request.ValidationResult;
+            if (!request.IsValid()) return request.ResponseResult;
 
             var game = new Game(request.Id, request.Name);
 
@@ -45,9 +46,9 @@ namespace InvilliaDDD.GameManager.Domain.Commands.Games
             return await Commit(_gameRepository.UnitOfWork);
         }
 
-        public async Task<ValidationResult> Handle(DeleteGameCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseResult> Handle(DeleteGameCommand request, CancellationToken cancellationToken)
         {
-            if (!request.IsValid()) return request.ValidationResult;
+            if (!request.IsValid()) return request.ResponseResult;
 
             var game = await _gameRepository.GetById(request.Id);
 

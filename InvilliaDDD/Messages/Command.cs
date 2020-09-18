@@ -1,10 +1,11 @@
 ﻿using System;
 using FluentValidation.Results;
+using InvilliaDDD.Core.Communication;
 using MediatR;
 
 namespace InvilliaDDD.Core.Messages
 {
-    public class Command : Message, IRequest<ValidationResult>
+    public class Command : Message, IRequest<ResponseResult>
     {
         protected Command()
         {
@@ -13,7 +14,7 @@ namespace InvilliaDDD.Core.Messages
 
         public DateTime Timestamp { get; private set; }
 
-        public ValidationResult ValidationResult { get; set; }
+        public ResponseResult ResponseResult { get; set; }
 
         public virtual bool IsValid()
         {

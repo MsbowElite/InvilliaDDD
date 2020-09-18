@@ -1,4 +1,5 @@
-﻿using InvilliaDDD.GameManager.Domain.Commands.Games.Validations;
+﻿using InvilliaDDD.Core.Communication;
+using InvilliaDDD.GameManager.Domain.Commands.Games.Validations;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,8 +15,8 @@ namespace InvilliaDDD.GameManager.Domain.Commands.Games
 
         public override bool IsValid()
         {
-            ValidationResult = new DeleteGameCommandValidation().Validate(this);
-            return ValidationResult.IsValid;
+            ResponseResult = (ResponseResult) new DeleteGameCommandValidation().Validate(this);
+            return ResponseResult.IsValid;
         }
     }
 }

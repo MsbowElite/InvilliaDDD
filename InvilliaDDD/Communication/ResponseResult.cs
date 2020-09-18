@@ -1,20 +1,12 @@
-﻿using System;
+﻿using FluentValidation.Results;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace InvilliaDDD.Core.Communication
 {
-    public class ResponseResult
+    public class ResponseResult : ValidationResult
     {
-        public ResponseResult()
-        {
-            Errors = new ResponseErrorMessages();
-        }
-
-        public string Title { get; set; }
-
-        public int Status { get; set; }
-
-        public ResponseErrorMessages Errors { get; set; }
+        public Guid Id { get; set; }
     }
 }

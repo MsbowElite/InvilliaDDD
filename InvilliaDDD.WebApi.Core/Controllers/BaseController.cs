@@ -4,6 +4,7 @@ using InvilliaDDD.Core.Communication;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 
 namespace InvilliaDDD.WebApi.Core.Controllers
 {
@@ -37,33 +38,17 @@ namespace InvilliaDDD.WebApi.Core.Controllers
             return CustomResponse();
         }
 
-        protected ActionResult CustomResponse(ValidationResult validationResult)
+        protected ActionResult CustomResponse(ResponseResult responseResult)
         {
-            foreach (var erro in validationResult.Errors)
+            foreach (var erro in responseResult.Errors)
             {
                 AddError(erro.ErrorMessage);
             }
 
-            return CustomResponse();
-        }
-
-        protected ActionResult CustomResponse(ResponseResult responseResult)
-        {
-            ResponsePossuiErros(responseResult);
-
-            return CustomResponse();
-        }
-
-        protected bool ResponsePossuiErros(ResponseResult responseResult)
-        {
-            if (responseResult == null || !responseResult.Errors.Messages.Any()) return false;
-
-            foreach (var message in responseResult.Errors.Messages)
-            {
-                AddError(message);
-            }
-
-            return true;
+            if (responseResult.Id == Guid.Empty)
+                return CustomResponse();
+            else
+                return CustomResponse(responseResult.Id);
         }
 
         protected bool ValidOperation()
