@@ -1,6 +1,5 @@
 ﻿using InvilliaDDD.Core.DomainObjects;
 using System;
-using System.Collections.Generic;
 
 namespace InvilliaDDD.GameManager.Domain.Entities
 {
@@ -15,5 +14,7 @@ namespace InvilliaDDD.GameManager.Domain.Entities
         protected Game() { }
 
         public string Name { get; set; }
+
+        public virtual GameBorrowed GameBorrowed { get; set; }
     }
 }

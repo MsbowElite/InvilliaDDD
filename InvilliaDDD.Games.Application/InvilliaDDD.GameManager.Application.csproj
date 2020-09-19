@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Game\" />
-    <Folder Include="Commands\User\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="9.2.0" />
   </ItemGroup>

@@ -54,7 +54,7 @@ namespace Blazor.Server.Services
 
         public async Task DeleteGame(Guid gameId)
         {
-            await _httpClient.DeleteAsync($"api/Game/{gameId}");
+            await _httpClient.DeleteAsync($"api/Games/{gameId}");
         }
 
         private void HandleResponseCode(int code)

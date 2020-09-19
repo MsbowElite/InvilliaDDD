@@ -40,11 +40,11 @@ namespace Blazor.Server.Pages
         {
             Saved = false;
 
-            Guid.TryParse(GameId, out var customerId);
+            Guid.TryParse(GameId, out var gameId);
 
-            if (customerId != Guid.Empty) //new Game is being created
+            if (gameId != Guid.Empty) //new Game is being created
             {
-                Game = await GameDataService.GetGameDetails(customerId);
+                Game = await GameDataService.GetGameDetails(gameId);
             }
         }
 
@@ -86,7 +86,7 @@ namespace Blazor.Server.Pages
 
         protected void NavigateToOverview()
         {
-            NavigationManager.NavigateTo("/customeroverview");
+            NavigationManager.NavigateTo("/gameoverview");
         }
     }
 }

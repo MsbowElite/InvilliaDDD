@@ -13,7 +13,7 @@ else
         <thead>
             <tr>
                 <th>Name</th>
-                <th></th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +21,9 @@ else
             {
             <tr>
                 <td>@game.Name</td>
+                <td>
+                    <a class="btn btn-primary" href='/gameedit/@game.Id'>Edit</a>
+                </td>
             </tr>
             }
         </tbody>
