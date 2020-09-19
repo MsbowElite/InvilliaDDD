@@ -17,9 +17,9 @@ namespace InvilliaDDD.GameManager.Data.Repository
         {
         }
 
-        public async Task<IEnumerable<Game>> GetAll()
+        public async Task<IEnumerable<Game>> GetAllActive()
         {
-            return await ListAll().OrderByDescending(o => o.CreatedAt).ToListAsync();
+            return await GetAll().Where(g => !g.DeletedAt.HasValue).OrderByDescending(o => o.CreatedAt).ToListAsync();
         }
 
         public async Task<Game> GetById(Guid id)
@@ -29,19 +29,19 @@ namespace InvilliaDDD.GameManager.Data.Repository
 
         public void Add(Game game)
         {
-            game.CreatedAt = DateTime.Now;
+            game.CreatedAt = DateTime.UtcNow;
             BaseAdd(game);
         }
 
         public void Update(Game game)
         {
-            game.UpdatedAt = DateTime.Now;
+            game.UpdatedAt = DateTime.UtcNow;
             BaseUpdate(game);
         }
 
         public void Delete(Game game)
         {
-            game.DeletedAt = DateTime.Now;
+            game.DeletedAt = DateTime.UtcNow;
             BaseUpdate(game);
         }
     }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Blazor.Shared
 {
-    public class PaginatedItemsViewModel<TEntity> where TEntity : class
+    public class PaginatedItemsViewModel<TDTO> where TDTO : class
     {
         public int PageIndex { get; set; }
 
@@ -12,6 +12,6 @@ namespace Blazor.Shared
 
         public long Count { get; set; }
 
-        public List<TEntity> Data { get; set; }
+        public List<TDTO> Data { get; set; }
     }
 }

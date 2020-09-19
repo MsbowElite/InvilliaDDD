@@ -10,7 +10,7 @@ namespace InvilliaDDD.Core.Messages
         /// </summary>
         protected EventMessage()
         {
-            Timestamp = DateTime.Now;
+            Timestamp = DateTime.UtcNow;
         }
 
         /// <summary>

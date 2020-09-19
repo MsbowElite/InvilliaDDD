@@ -29,7 +29,7 @@ namespace InvilliaDDD.GameManager.Application.Services
 
         public async Task<IEnumerable<GameViewModel>> GetAll()
         {
-            return _mapper.Map<IEnumerable<GameViewModel>>(await _gameRepository.GetAll());
+            return _mapper.Map<IEnumerable<GameViewModel>>(await _gameRepository.GetAllActive());
         }
 
 
@@ -44,14 +44,16 @@ namespace InvilliaDDD.GameManager.Application.Services
             return await _mediator.SendCommand(registerCommand);
         }
 
-        public Task<ValidationResult> Update(GameViewModel gameViewModel)
+        public async Task<ValidationResult> Update(GameViewModel gameViewModel)
         {
-            throw new NotImplementedException();
+            var updateCommand = _mapper.Map<UpdateGameCommand>(gameViewModel);
+            return await _mediator.SendCommand(updateCommand);
         }
 
-        public Task<ValidationResult> Delete(Guid id)
+        public async Task<ValidationResult> Delete(Guid id)
         {
-            throw new NotImplementedException();
+            var deleteCommand = new DeleteGameCommand(id);
+            return await _mediator.SendCommand(deleteCommand);
         }
 
         public void Dispose()

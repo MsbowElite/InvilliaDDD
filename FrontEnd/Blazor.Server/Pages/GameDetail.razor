@@ -1,0 +1,33 @@
+﻿
+@page "/gamedetail/{GameId}"
+@inherits GameDetailBase
+
+<section class="Game-detail">
+    <h1 class="page-title">Details for @Game.Name</h1>
+
+    <div class="col-12 row">
+        <div class="col-2">
+        </div>
+        <div class="col-10 row">
+            <div class="col-xs-12 col-sm-8">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Game ID</label>
+                    <div class="col-sm-8">
+                        <label type="text" class="form-control-plaintext">@Game.Id</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Name</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Game.Name</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+            </div>
+        </div>
+    </div>
+
+
+</section>

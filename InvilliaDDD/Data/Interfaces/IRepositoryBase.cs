@@ -10,7 +10,7 @@ namespace InvilliaDDD.Core.Data.Interfaces
 {
     public interface IRepositoryBase<T>
     {
-        IQueryable<T> ListAll();
+        IQueryable<T> GetAll();
         IQueryable<T> ListByCondition(Expression<Func<T, bool>> expression);
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
         Task<bool> CheckAnyByConditionAsync(Expression<Func<T, bool>> expression);

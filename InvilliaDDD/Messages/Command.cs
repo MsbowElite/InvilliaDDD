@@ -8,7 +8,7 @@ namespace InvilliaDDD.Core.Messages
     {
         protected Command()
         {
-            Timestamp = DateTime.Now;
+            Timestamp = DateTime.UtcNow;
         }
 
         public DateTime Timestamp { get; private set; }

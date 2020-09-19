@@ -9,7 +9,7 @@ namespace InvilliaDDD.GameManager.Domain.Interfaces
 {
     public interface IGameRepository : IRepository<Game>
     {
-        Task<IEnumerable<Game>> GetAll();
+        Task<IEnumerable<Game>> GetAllActive();
 
         Task<Game> GetById(Guid id);
 

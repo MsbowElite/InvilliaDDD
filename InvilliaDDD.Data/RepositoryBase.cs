@@ -22,7 +22,7 @@ namespace InvilliaDDD.Core.Data
 
         public IUnitOfWork UnitOfWork => _applicationDbContext;
 
-        public IQueryable<T> ListAll()
+        public IQueryable<T> GetAll()
         {
             return _applicationDbContext.Set<T>();
         }

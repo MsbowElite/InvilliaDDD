@@ -1,0 +1,39 @@
+﻿@page "/gameedit"
+@page "/gameedit/{GameId}"
+@using Blazor.Shared
+@using Syncfusion.EJ2.Blazor.Inputs
+@using Blazor.Server.Validators
+@inherits GameEditBase
+
+<section class="Game-edit">
+    @if (!Saved)
+    {
+        <h1 class="page-title">Details for @Game.Name</h1>
+
+        <EditForm Model="@Game" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+            <FluentValidator TValidator="GameValidator" />
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="form-group row">
+                <label for="name" class="col-sm-3">Name: </label>
+                <InputText id="name" class="form-control col-sm-8" @bind-Value="@Game.Name" placeholder="Enter name"></InputText>
+            </div>
+
+            <button type="submit" class="btn btn-primary edit-btn">Save game</button>
+            <a class="btn btn-outline-primary edit-outline-btn" @onclick="@NavigateToOverview">Cancel</a>
+            @if (Game.Id != Guid.Empty)
+            {
+                <a class="btn btn-danger" @onclick="@DeleteGame">
+                    Delete
+                </a>
+            }
+        </EditForm>
+
+    }
+    else
+    {
+        <div class="alert @StatusClass">@Message</div>
+        <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to overview</a>
+
+    }
+</section>
