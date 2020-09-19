@@ -4,6 +4,7 @@ using InvilliaDDD.GameManager.Application.Interfaces;
 using InvilliaDDD.GameManager.Application.Services;
 using InvilliaDDD.GameManager.Data;
 using InvilliaDDD.GameManager.Data.Repository;
+using InvilliaDDD.GameManager.Domain.Commands.Friends;
 using InvilliaDDD.GameManager.Domain.Commands.Games;
 using InvilliaDDD.GameManager.Domain.Interfaces;
 using MediatR;
@@ -27,6 +28,7 @@ namespace InvilliaDDD.GameManager.API.Configurations
             services.AddScoped<IMediatorHandler, MediatorHandler>();
 
             services.RegisterGame();
+            services.RegisterFriend();
 
             services.AddScoped<GameManagerContext>();
         }
@@ -40,6 +42,17 @@ namespace InvilliaDDD.GameManager.API.Configurations
             services.AddScoped<IRequestHandler<DeleteGameCommand, ValidationResult>, GameCommandHandler>();
 
             services.AddScoped<IGameRepository, GameRepository>();
+        }
+
+        private static void RegisterFriend(this IServiceCollection services)
+        {
+            services.AddScoped<IFriendAppService, FriendAppService>();
+
+            services.AddScoped<IRequestHandler<RegisterNewFriendCommand, ValidationResult>, FriendCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateFriendCommand, ValidationResult>, FriendCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteFriendCommand, ValidationResult>, FriendCommandHandler>();
+
+            services.AddScoped<IFriendRepository, FriendRepository>();
         }
     }
 }

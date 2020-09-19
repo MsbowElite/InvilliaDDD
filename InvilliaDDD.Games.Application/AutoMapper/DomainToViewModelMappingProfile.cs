@@ -9,6 +9,7 @@ namespace InvilliaDDD.GameManager.Application.AutoMapper
         public DomainToViewModelMappingProfile()
         {
             CreateMap<Game, GameViewModel>();
+            CreateMap<Friend, FriendViewModel>();
         }
     }
 }
