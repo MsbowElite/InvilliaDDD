@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace InvilliaDDD.GameManager.API.Controllers
 {
-    public partial class GameController
+    public partial class GamesController
     {
-        [HttpGet]
-        public async Task<IEnumerable<GameViewModel>> Get()
+        [HttpGet("{id}")]
+        public async Task<IEnumerable<GameViewModel>> Get(Guid id)
         {
             return await _gameAppService.GetAll();
         }

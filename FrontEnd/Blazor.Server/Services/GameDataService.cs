@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,13 +18,13 @@ namespace Blazor.Server.Services
             _httpClient = httpClient;
         }
 
-        public async Task<PaginatedItemsViewModel<GameDTO>> GetAllGames()
+        public async Task<List<GameDTO>> GetAllGames()
         {
             var responseMessage = await _httpClient.GetAsync($"api/Games");
             HandleResponseCode((int)responseMessage.StatusCode);
 
             var json = await responseMessage.Content.ReadAsStringAsync();
-            return await Task.Run(() => JsonConvert.DeserializeObject<PaginatedItemsViewModel<GameDTO>>(json));
+            return await Task.Run(() => JsonConvert.DeserializeObject<List<GameDTO>>(json));
         }
 
         public async Task<GameDTO> GetGameDetails(Guid gameId)

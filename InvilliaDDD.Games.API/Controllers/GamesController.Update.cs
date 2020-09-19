@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace InvilliaDDD.GameManager.API.Controllers
 {
-    public partial class GameController
+    public partial class GamesController
     {
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(Guid id)
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody]GameViewModel gameViewModel)
         {
-            return CustomResponse(await _gameAppService.Delete(id));
+            return CustomResponse(await _gameAppService.Register(gameViewModel));
         }
     }
 }

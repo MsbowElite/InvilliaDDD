@@ -8,7 +8,7 @@ namespace Blazor.Server.Services
 {
     public interface IGameDataService
     {
-        Task<PaginatedItemsViewModel<GameDTO>> GetAllGames();
+        Task<List<GameDTO>> GetAllGames();
         Task<GameDTO> GetGameDetails(Guid gameId);
         Task<Guid> AddGame(GameDTO game);
         Task DeleteGame(Guid gameId);

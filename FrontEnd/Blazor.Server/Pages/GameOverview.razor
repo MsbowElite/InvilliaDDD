@@ -12,13 +12,7 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Game ID</th>
                 <th>Name</th>
-                <th>Email</th>
-                <th>PostalCode</th>
-                <th>Type</th>
-                <th>CPF/CNPJ</th>
-                <th>Stage</th>
                 <th></th>
             </tr>
         </thead>
@@ -26,7 +20,6 @@ else
             @foreach (var game in Games)
             {
             <tr>
-                <td>@game.Id</td>
                 <td>@game.Name</td>
             </tr>
             }

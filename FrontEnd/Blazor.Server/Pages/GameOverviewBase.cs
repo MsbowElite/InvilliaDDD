@@ -21,14 +21,14 @@ namespace Blazor.Server.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            Games = (await GameDataService.GetAllGames()).Data;
+            Games = await GameDataService.GetAllGames();
 
             //AddGameDialog.OnDialogClose += AddGameDialog_OnDialogClose;
         }
 
         public async void AddGameDialog_OnDialogClose()
         {
-            Games = (await GameDataService.GetAllGames()).Data;
+            Games = await GameDataService.GetAllGames();
             StateHasChanged();
         }
     }

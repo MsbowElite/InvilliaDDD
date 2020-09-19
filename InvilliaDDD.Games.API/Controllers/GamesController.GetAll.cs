@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace InvilliaDDD.GameManager.API.Controllers
 {
-    public partial class GameController
+    public partial class GamesController
     {
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody]GameViewModel gameViewModel)
+        [HttpGet]
+        public async Task<IEnumerable<GameViewModel>> Get()
         {
-            return CustomResponse(await _gameAppService.Register(gameViewModel));
+            return await _gameAppService.GetAll();
         }
     }
 }
