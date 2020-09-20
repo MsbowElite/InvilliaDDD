@@ -17,7 +17,7 @@ namespace InvilliaDDD.Identity.API.Configuration
         public static IServiceCollection AddIdentityConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<IdentityManagerDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(configuration.GetConnectionString("LocalDbConnection")));
 
             services.AddDefaultIdentity<ApplicationUser>()
                     .AddRoles<IdentityRole>()
