@@ -7,6 +7,7 @@ using InvilliaDDD.GameManager.Data.Repository;
 using InvilliaDDD.GameManager.Domain.Commands.Friends;
 using InvilliaDDD.GameManager.Domain.Commands.Games;
 using InvilliaDDD.GameManager.Domain.Interfaces;
+using InvilliaDDD.WebApi.Core.Identity.User;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,8 @@ namespace InvilliaDDD.GameManager.API.Configurations
             if (services == null) throw new ArgumentNullException(nameof(services));
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddScoped<IAspNetUser, AspNetUser>();
 
             services.AddScoped<IMediatorHandler, MediatorHandler>();
 

@@ -1,4 +1,5 @@
 using InvilliaDDD.GameManager.API.Configurations;
+using InvilliaDDD.WebApi.Core.Identity;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,6 +20,8 @@ namespace InvilliaDDD.GameManager.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiConfiguration(Configuration);
+
+            services.AddJwtConfiguration(Configuration);
 
             services.AddSwaggerConfiguration();
 

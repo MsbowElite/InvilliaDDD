@@ -1,4 +1,5 @@
 ﻿using InvilliaDDD.GameManager.Data;
+using InvilliaDDD.WebApi.Core.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +14,7 @@ namespace InvilliaDDD.GameManager.API.Configurations
         public static void AddApiConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<GameManagerContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(configuration.GetConnectionString("LocalDbConnection")));
 
             services.AddControllers();
 
@@ -41,6 +42,8 @@ namespace InvilliaDDD.GameManager.API.Configurations
             app.UseRouting();
 
             app.UseCors("All");
+
+            app.UseAuthConfiguration();
 
             app.UseEndpoints(endpoints =>
             {
