@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace InvilliaDDD.Identity.API.Models
 {
-    public class UserClaim
+    public class UserRole
     {
-        public string Value { get; set; }
-
-        public string Type { get; set; }
+        public string RoleId { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace InvilliaDDD.GameManager.API.Controllers
 {
-    public partial class FriendsController : BaseController
+    public partial class FriendsController : CommonController
     {
         private readonly IFriendAppService _friendAppService;
 

@@ -9,7 +9,7 @@ namespace InvilliaDDD.WebApi.Core.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public abstract class BaseController : Controller
+    public abstract class CommonController : ControllerBase
     {
         protected ICollection<string> Errors = new List<string>();
 
@@ -49,12 +49,12 @@ namespace InvilliaDDD.WebApi.Core.Controllers
 
         protected ActionResult CustomResponse(ResponseResult responseResult)
         {
-            ResponsePossuiErros(responseResult);
+            CheckErrors(responseResult);
 
             return CustomResponse();
         }
 
-        protected bool ResponsePossuiErros(ResponseResult responseResult)
+        protected bool CheckErrors(ResponseResult responseResult)
         {
             if (responseResult == null || !responseResult.Errors.Messages.Any()) return false;
 
@@ -74,11 +74,6 @@ namespace InvilliaDDD.WebApi.Core.Controllers
         protected void AddError(string error)
         {
             Errors.Add(error);
-        }
-
-        protected void LimparErrosProcessamento()
-        {
-            Errors.Clear();
         }
     }
 }

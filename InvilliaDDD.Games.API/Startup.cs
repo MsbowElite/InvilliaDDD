@@ -21,8 +21,6 @@ namespace InvilliaDDD.GameManager.API
         {
             services.AddApiConfiguration(Configuration);
 
-            services.AddJwtConfiguration(Configuration);
-
             services.AddSwaggerConfiguration();
 
             services.AddAutoMapperConfiguration();
@@ -30,11 +28,15 @@ namespace InvilliaDDD.GameManager.API
             services.AddMediatR(typeof(Startup));
 
             services.RegisterServices();
+
+            services.AddJwtConfiguration(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseApiConfiguration(env);
+
+            app.UseAuthConfiguration();
 
             app.UseSwaggerSetup();
         }

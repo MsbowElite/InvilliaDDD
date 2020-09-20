@@ -1,18 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Security.Claims;
+using System.Text;
+using AutoMapper;
 using InvilliaDDD.Identity.API.Configuration;
 using InvilliaDDD.Identity.API.Data;
+using InvilliaDDD.Identity.API.Data.Interfaces;
+using InvilliaDDD.Identity.API.Helpers;
+using InvilliaDDD.Identity.API.Services;
+using InvilliaDDD.WebApi.Core.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace InvilliaDDD.Identity.API
 {
@@ -27,21 +26,45 @@ namespace InvilliaDDD.Identity.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddIdentityConfiguration(Configuration);
+            services.AddCors();
+            services.AddControllers();
 
-            services.AddApiConfiguration();
+            services.AddMvc()
+                .AddMvcOptions(options =>
+                {
+                    options.EnableEndpointRouting = false;
+                })
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.IgnoreNullValues = true;
+                });
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+            services.AddScoped<IDbInitializer, DbInitializer>();
+
+            services.AddDbContext<IdentityManagerContext>(options =>
+                options.UseSqlServer(
+                Configuration.GetConnectionString("LocalDbConnection")));
+
+            services.AddJwtConfiguration(Configuration);
 
             services.AddSwaggerConfiguration();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
-            //Apply database
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetRequiredService<IdentityManagerDbContext>();
-                context.Database.Migrate();
-            }
+            dbInitializer.Initialize();
+
+            app.UseAuthConfiguration();
 
             app.UseApiConfiguration(env);
 

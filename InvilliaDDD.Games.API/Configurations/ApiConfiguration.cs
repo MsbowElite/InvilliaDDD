@@ -18,15 +18,17 @@ namespace InvilliaDDD.GameManager.API.Configurations
 
             services.AddControllers();
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("All",
-                    builder =>
-                        builder
-                            .AllowAnyOrigin()
-                            .AllowAnyMethod()
-                            .AllowAnyHeader());
-            });
+            services.AddMvc()
+                .AddMvcOptions(options =>
+                {
+                    options.EnableEndpointRouting = false;
+                })
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.IgnoreNullValues = true;
+                });
+
+            services.AddCors();
         }
 
         public static void UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
@@ -42,8 +44,6 @@ namespace InvilliaDDD.GameManager.API.Configurations
             app.UseRouting();
 
             app.UseCors("All");
-
-            app.UseAuthConfiguration();
 
             app.UseEndpoints(endpoints =>
             {

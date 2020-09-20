@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace InvilliaDDD.GameManager.API.Controllers
 {
     [Authorize]
-    public partial class GamesController : BaseController
+    public partial class GamesController : CommonController
     {
         private readonly IGameAppService _gameAppService;
 

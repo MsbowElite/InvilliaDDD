@@ -8,6 +8,8 @@ namespace InvilliaDDD.WebApi.Core.Identity
     {
         public string Secret { get; set; }
 
+        public string Salt { get; set; }
+
         public int ExpireInHours { get; set; }
     }
 }
