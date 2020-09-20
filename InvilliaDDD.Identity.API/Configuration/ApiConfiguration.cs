@@ -22,7 +22,8 @@ namespace InvilliaDDD.Identity.API.Configuration
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //ssl removed for lower overhead and simple internal usage of private docker network
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

@@ -19,7 +19,7 @@ namespace InvilliaDDD.GameManager.API.Configurations
 
             services.AddCors(options =>
             {
-                options.AddPolicy("Total",
+                options.AddPolicy("All",
                     builder =>
                         builder
                             .AllowAnyOrigin()
@@ -35,11 +35,12 @@ namespace InvilliaDDD.GameManager.API.Configurations
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //ssl removed for lower overhead and simple internal usage of private docker network
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseCors("Total");
+            app.UseCors("All");
 
             app.UseEndpoints(endpoints =>
             {
