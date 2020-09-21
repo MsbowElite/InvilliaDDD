@@ -2,7 +2,7 @@
 crqs, repository, dependency injection, clean, solid.
 
 # Database Sql Server EntityFramework Commands
-Projeto seguiu metodologia de DATABASE FIRST\
+Projeto seguiu metodologia de DATABASE FIRST
 
 dotnet ef dbcontext scaffold "Server=localhost;Database=GameManager;Uid=sa;Pwd=Insecure!12345" Microsoft.EntityFrameworkCore.SqlServer
 
