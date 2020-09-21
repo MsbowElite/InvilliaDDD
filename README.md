@@ -20,6 +20,6 @@ RabbitMQ\
 Refazer toda estrutura de autenticação\
 Http actions filter\
 Http throttling\
-Encapsular BaseRepository para o CORE
+Encapsular BaseRepository para o CORE\
 Tratamento de mensagens de erro\
 Tratar erros adversos
