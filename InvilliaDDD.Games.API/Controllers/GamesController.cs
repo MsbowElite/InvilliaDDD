@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace InvilliaDDD.GameManager.API.Controllers
 {
-    [Authorize(Roles = StaticRoles.User)]
+    [Authorize(Roles = StaticRoles.Default)]
     public partial class GamesController : CommonController
     {
         private readonly IGameAppService _gameAppService;
