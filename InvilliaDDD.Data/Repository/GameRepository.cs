@@ -19,7 +19,9 @@ namespace InvilliaDDD.GameManager.Data.Repository
 
         public async Task<IEnumerable<Game>> GetAllActive()
         {
-            return await GetAll().Where(g => !g.DeletedAt.HasValue).OrderByDescending(o => o.CreatedAt).ToListAsync();
+            return await GetAll()
+                .Include(g => g.GameBorrowed)
+                .Where(g => !g.DeletedAt.HasValue).OrderByDescending(o => o.CreatedAt).ToListAsync();
         }
 
         public async Task<Game> GetById(Guid id)

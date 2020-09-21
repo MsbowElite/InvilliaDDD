@@ -56,6 +56,12 @@ namespace InvilliaDDD.GameManager.Application.Services
             return await _mediator.SendCommand(deleteCommand);
         }
 
+        public async Task<ValidationResult> Lend(Guid gameId, Guid userId)
+        {
+            var registerCommand = _mapper.Map<RegisterNewGameCommand>(gameViewModel);
+            return await _mediator.SendCommand(registerCommand);
+        }
+
         public void Dispose()
         {
             GC.SuppressFinalize(this);

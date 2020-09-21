@@ -1,6 +1,4 @@
-﻿using InvilliaDDD.GameManager.Application.ViewModels;
-using InvilliaDDD.WebApi.Core.Controllers;
-using InvilliaDDD.WebApi.Core.Identity;
+﻿using InvilliaDDD.WebApi.Core.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,11 +10,11 @@ namespace InvilliaDDD.GameManager.API.Controllers
 {
     public partial class GamesController
     {
-        [HttpDelete("{id}")]
+        [HttpPost("{gameId}/Users/{userId}")]
         [Authorize(Roles = StaticRoles.Admin)]
-        public async Task<ActionResult> Delete(Guid id)
+        public async Task<IActionResult> Post([FromRoute]Guid gameId, [FromRoute]Guid userId)
         {
-            return CustomResponse(await _gameAppService.Delete(id));
+            return CustomResponse(await _gameAppService.Register(gameViewModel));
         }
     }
 }
