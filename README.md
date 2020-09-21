@@ -1,6 +1,11 @@
 # DDD project
 crqs, repository, dependency injection, clean, solid, docker compose.
 
+# Front-End(Em desenvolvimento)
+
+Autenticação
+Criação de telas
+
 # Database Sql Server EntityFramework Commands
 Projeto seguiu metodologia de DATABASE FIRST
 
