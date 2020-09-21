@@ -53,7 +53,7 @@ namespace InvilliaDDD.Identity.API
 
             services.AddDbContext<IdentityManagerContext>(options =>
                 options.UseSqlServer(
-                Configuration.GetConnectionString("LocalDbConnection")));
+                Configuration.GetConnectionString("DockerDbConnection")));
 
             services.AddJwtConfiguration(Configuration);
 

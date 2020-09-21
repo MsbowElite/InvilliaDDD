@@ -40,7 +40,7 @@ namespace InvilliaDDD.Identity.API.Data
                     new Role
                     {
                     CreatedAt = DateTime.Now,
-                    Id = StaticRoles.Friend
+                    Id = StaticRoles.User
                     },
                     new Role
                     {

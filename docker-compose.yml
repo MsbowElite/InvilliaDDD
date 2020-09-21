@@ -22,7 +22,7 @@ services:
 
   invilliaddd.sqlserver:
     container_name: sqlserver
-    image: microsoft/mssql-server-windows-express
+    image: msbowelite/sql
     ports:
       - "1433:1433"
     environment:

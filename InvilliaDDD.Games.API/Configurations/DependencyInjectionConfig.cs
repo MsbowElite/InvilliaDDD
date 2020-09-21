@@ -26,14 +26,10 @@ namespace InvilliaDDD.GameManager.API.Configurations
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddScoped<IAspNetUser, AspNetUser>();
-
             services.AddScoped<IMediatorHandler, MediatorHandler>();
 
             services.RegisterGame();
             services.RegisterFriend();
-
-            services.AddScoped<GameManagerContext>();
         }
 
         private static void RegisterGame(this IServiceCollection services)

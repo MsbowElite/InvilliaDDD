@@ -2,6 +2,7 @@
 crqs, repository, dependency injection, clean, solid.
 
 #Database Sql Server EntityFramework Commands
+#Projeto seguiu metodologia de DATABASE FIRST
 
 dotnet ef dbcontext scaffold "Server=localhost;Database=GameManager;Uid=sa;Pwd=Insecure!12345" Microsoft.EntityFrameworkCore.SqlServer
 
@@ -9,9 +10,8 @@ dotnet ef dbcontext scaffold "Server=localhost;Database=GameManager;Uid=sa;Pwd=I
 
 USE [master]
 GO
-/****** Object:  Database [GameManager]    Script Date: 9/20/2020 10:52:50 AM ******/
+/****** Object:  Database [GameManager]    Script Date: 9/20/2020 9:45:11 PM ******/
 CREATE DATABASE [GameManager]
-GO
 ALTER DATABASE [GameManager] SET COMPATIBILITY_LEVEL = 140
 GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
@@ -81,7 +81,7 @@ ALTER DATABASE [GameManager] SET QUERY_STORE = OFF
 GO
 USE [GameManager]
 GO
-/****** Object:  Table [dbo].[Friend]    Script Date: 9/20/2020 10:52:51 AM ******/
+/****** Object:  Table [dbo].[Friend]    Script Date: 9/20/2020 9:45:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -98,7 +98,7 @@ CREATE TABLE [dbo].[Friend](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Game]    Script Date: 9/20/2020 10:52:51 AM ******/
+/****** Object:  Table [dbo].[Game]    Script Date: 9/20/2020 9:45:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -115,7 +115,7 @@ CREATE TABLE [dbo].[Game](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[GameBorrowed]    Script Date: 9/20/2020 10:52:51 AM ******/
+/****** Object:  Table [dbo].[GameBorrowed]    Script Date: 9/20/2020 9:45:11 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -129,6 +129,71 @@ CREATE TABLE [dbo].[GameBorrowed](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+/****** Object:  Table [dbo].[Role]    Script Date: 9/20/2020 9:45:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Role](
+	[Id] [nvarchar](20) NOT NULL,
+	[CreatedAt] [datetime2](7) NULL,
+	[DeletedAt] [datetime2](7) NULL,
+	[UpdatedAt] [datetime2](7) NULL,
+ CONSTRAINT [PK_Roles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[User]    Script Date: 9/20/2020 9:45:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[User](
+	[Id] [uniqueidentifier] NOT NULL,
+	[FirstName] [nvarchar](30) NULL,
+	[LastName] [nvarchar](100) NULL,
+	[Username] [nvarchar](22) NOT NULL,
+	[Password] [nvarchar](max) NOT NULL,
+	[CreatedAt] [datetime2](7) NULL,
+	[DeletedAt] [datetime2](7) NULL,
+	[UpdatedAt] [datetime2](7) NULL,
+	[Code] [tinyint] NOT NULL,
+ CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[UserRoles]    Script Date: 9/20/2020 9:45:11 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UserRoles](
+	[UserId] [uniqueidentifier] NOT NULL,
+	[RoleId] [nvarchar](20) NOT NULL,
+	[CreatedAt] [datetime2](7) NULL,
+	[DeletedAt] [datetime2](7) NULL,
+	[UpdatedAt] [datetime2](7) NULL,
+ CONSTRAINT [PK_UserRoles] PRIMARY KEY CLUSTERED 
+(
+	[RoleId] ASC,
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [Unique_Username]    Script Date: 9/20/2020 9:45:11 PM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [Unique_Username] ON [dbo].[User]
+(
+	[Username] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[User] ADD  CONSTRAINT [DF_Users_Id]  DEFAULT (newid()) FOR [Id]
+GO
 ALTER TABLE [dbo].[GameBorrowed]  WITH CHECK ADD  CONSTRAINT [FK_GameBorrowed_Friend] FOREIGN KEY([FriendId])
 REFERENCES [dbo].[Friend] ([Id])
 GO
@@ -138,6 +203,18 @@ ALTER TABLE [dbo].[GameBorrowed]  WITH CHECK ADD  CONSTRAINT [FK_GameBorrowed_Ga
 REFERENCES [dbo].[Game] ([Id])
 GO
 ALTER TABLE [dbo].[GameBorrowed] CHECK CONSTRAINT [FK_GameBorrowed_Game]
+GO
+ALTER TABLE [dbo].[UserRoles]  WITH CHECK ADD  CONSTRAINT [FK_UserRoles_Roles_RoleId] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[Role] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[UserRoles] CHECK CONSTRAINT [FK_UserRoles_Roles_RoleId]
+GO
+ALTER TABLE [dbo].[UserRoles]  WITH CHECK ADD  CONSTRAINT [FK_UserRoles_Users_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[User] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[UserRoles] CHECK CONSTRAINT [FK_UserRoles_Users_UserId]
 GO
 USE [master]
 GO

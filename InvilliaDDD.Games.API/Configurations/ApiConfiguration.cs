@@ -14,7 +14,7 @@ namespace InvilliaDDD.GameManager.API.Configurations
         public static void AddApiConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<GameManagerContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("LocalDbConnection")));
+                options.UseSqlServer(configuration.GetConnectionString("DockerDbConnection")));
 
             services.AddControllers();
 
@@ -42,6 +42,8 @@ namespace InvilliaDDD.GameManager.API.Configurations
             //app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthConfiguration();
 
             app.UseCors("All");
 

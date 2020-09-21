@@ -46,7 +46,7 @@ namespace InvilliaDDD.Identity.API.Services
 
             if(adminRole) user.UserRoles.Add(new UserRoles { UserId = user.Id, RoleId = StaticRoles.Admin });
 
-            user.UserRoles.Add(new UserRoles { UserId = user.Id, RoleId = StaticRoles.Friend });
+            user.UserRoles.Add(new UserRoles { UserId = user.Id, RoleId = StaticRoles.User });
             user.UserRoles.Add(new UserRoles { UserId = user.Id, RoleId = StaticRoles.Default });
 
             await _rw.User.UpdateUserAsync(user);
