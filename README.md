@@ -15,3 +15,5 @@ RabbitMQ\
 Refazer toda estrutura de autenticação\
 Http actions filter\
 Http throttling
+Tratamento de mensagens de erro
+Tratar erros adversos
