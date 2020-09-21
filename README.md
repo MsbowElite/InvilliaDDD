@@ -3,7 +3,7 @@ crqs, repository, dependency injection, clean, solid, docker compose.
 
 # Front-End(Em desenvolvimento)
 
-Autenticação
+Autenticação\
 Criação de telas
 
 # Database Sql Server EntityFramework Commands
