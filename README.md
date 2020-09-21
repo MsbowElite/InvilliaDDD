@@ -23,3 +23,5 @@ Http throttling\
 Encapsular BaseRepository para o CORE\
 Tratamento de mensagens de erro\
 Tratar erros adversos
+Adicinar FK User para Friends e Games, assim podendo ser um sistema multi-usuario\
+  sendo que cada um terá acesso limitado ao que o próprio criou
