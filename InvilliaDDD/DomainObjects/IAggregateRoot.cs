@@ -6,6 +6,5 @@ namespace InvilliaDDD.Core.DomainObjects
 {
     public interface IAggregateRoot
     {
-        Guid Id { get; set; }
     }
 }

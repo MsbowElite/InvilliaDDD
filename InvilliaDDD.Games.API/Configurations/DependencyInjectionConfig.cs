@@ -39,8 +39,11 @@ namespace InvilliaDDD.GameManager.API.Configurations
             services.AddScoped<IRequestHandler<RegisterNewGameCommand, ValidationResult>, GameCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateGameCommand, ValidationResult>, GameCommandHandler>();
             services.AddScoped<IRequestHandler<DeleteGameCommand, ValidationResult>, GameCommandHandler>();
+            services.AddScoped<IRequestHandler<LendGameCommand, ValidationResult>, GameCommandHandler>();
+            services.AddScoped<IRequestHandler<TakeGameCommand, ValidationResult>, GameCommandHandler>();
 
             services.AddScoped<IGameRepository, GameRepository>();
+            services.AddScoped<IGameBorrowedRepository, GameBorrowedRepository>();
         }
 
         private static void RegisterFriend(this IServiceCollection services)

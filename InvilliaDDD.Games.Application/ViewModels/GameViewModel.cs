@@ -15,5 +15,7 @@ namespace InvilliaDDD.GameManager.Application.ViewModels
         [MinLength(2)]
         [MaxLength(100)]
         public string Name { get; set; }
+
+        public bool? Borrowed { get; set;}
     }
 }

@@ -15,6 +15,8 @@ namespace InvilliaDDD.GameManager.Application.Interfaces
         Task<ValidationResult> Update(GameViewModel gameViewModel);
         Task<ValidationResult> Delete(Guid id);
 
-        Task<ValidationResult> Lend(Guid gameId, Guid userId);
+        Task<ValidationResult> Lend(Guid gameId, Guid friendId);
+
+        Task<ValidationResult> Take(Guid gameId);
     }
 }

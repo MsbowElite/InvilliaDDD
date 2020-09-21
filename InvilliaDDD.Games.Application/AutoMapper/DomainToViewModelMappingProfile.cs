@@ -8,7 +8,7 @@ namespace InvilliaDDD.GameManager.Application.AutoMapper
     {
         public DomainToViewModelMappingProfile()
         {
-            CreateMap<Game, GameViewModel>().ForMember(dest => dest.Payed, opt => opt.MapFrom(src => src.RequestPayment != null)); ;
+            CreateMap<Game, GameViewModel>().ForMember(dest => dest.Borrowed, opt => opt.MapFrom(src => src.GameBorrowed != null)); ;
             CreateMap<Friend, FriendViewModel>();
         }
     }

@@ -11,16 +11,16 @@ namespace InvilliaDDD.GameManager.API.Controllers
     public partial class GamesController
     {
         /// <summary>
-        /// Lend the game to a friend
+        /// Take game back from any friend
         /// </summary>
         /// <param name="gameId"></param>
         /// <param name="friendId"></param>
         /// <returns></returns>
-        [HttpPost("{gameId}/Friends/{friendId}")]
+        [HttpDelete("{gameId}/Friends")]
         [Authorize(Roles = StaticRoles.Admin)]
-        public async Task<IActionResult> Post([FromRoute]Guid gameId, [FromRoute]Guid friendId)
+        public async Task<IActionResult> Take([FromRoute]Guid gameId)
         {
-            return CustomResponse(await _gameAppService.Lend(gameId, friendId));
+            return CustomResponse(await _gameAppService.Take(gameId));
         }
     }
 }
