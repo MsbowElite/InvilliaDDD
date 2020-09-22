@@ -1,16 +1,15 @@
-﻿using System;
+﻿using InvilliaDDD.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Blazor.Shared;
-using Blazor.Shared.DTOs;
 
 namespace Blazor.Server.Services
 {
     public interface IGameDataService
     {
-        Task<List<GameDTO>> GetAllGames();
-        Task<GameDTO> GetGameDetails(Guid gameId);
-        Task<Guid> AddGame(GameDTO game);
+        Task<List<GameViewModel>> GetAllGames();
+        Task<GameViewModel> GetGameDetails(Guid gameId);
+        Task<Guid> AddGame(GameViewModel game);
         Task DeleteGame(Guid gameId);
     }
 }

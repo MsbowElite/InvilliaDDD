@@ -1,4 +1,5 @@
-﻿using InvilliaDDD.Identity.API.Models;
+﻿using InvilliaDDD.Core.ViewModels;
+using InvilliaDDD.Identity.API.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,7 +13,7 @@ namespace InvilliaDDD.Identity.API.Controllers
     public partial class UsersController
     {
         [HttpPost("Login")]
-        [ProducesResponseType(typeof(UserAuthModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UserAuthViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Login([FromBody] UserModel userParam)
         {

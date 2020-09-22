@@ -1,4 +1,5 @@
-﻿using InvilliaDDD.Identity.API.Models;
+﻿using InvilliaDDD.Core.ViewModels;
+using InvilliaDDD.Identity.API.Models;
 using InvilliaDDD.WebApi.Core.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -15,7 +16,7 @@ namespace InvilliaDDD.Identity.API.Controllers
     {
         [HttpGet]
         [Authorize(StaticRoles.Admin)]
-        [ProducesResponseType(typeof(UserAuthModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UserAuthViewModel), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll([FromQuery]int pageSize = 10, [FromQuery]int pageIndex = 0)
         {
             try

@@ -2,7 +2,7 @@
 using FluentValidation.Results;
 using InvilliaDDD.Core.Communication.Mediator;
 using InvilliaDDD.GameManager.Application.Interfaces;
-using InvilliaDDD.GameManager.Application.ViewModels;
+using InvilliaDDD.Core.ViewModels;
 using InvilliaDDD.GameManager.Domain.Commands.Games;
 using InvilliaDDD.GameManager.Domain.Interfaces;
 using System;

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Blazor.Server.Services;
-using Blazor.Shared.DTOs;
+using InvilliaDDD.Core.ViewModels;
 using Microsoft.AspNetCore.Components;
 
 namespace Blazor.Server.Pages
@@ -13,7 +13,7 @@ namespace Blazor.Server.Pages
         [Parameter]
         public string GameId { get; set; }
        
-        public GameDTO Game { get; set; } = new GameDTO();
+        public GameViewModel Game { get; set; } = new GameViewModel();
 
         protected override async Task OnInitializedAsync()
         {

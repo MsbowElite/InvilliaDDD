@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace InvilliaDDD.Identity.API.Models
+namespace InvilliaDDD.Core.ViewModels
 {
-    public class UserAuthModel
+    public class UserAuthViewModel
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Username { get; set; }
         public string Token { get; set; }
-        public IEnumerable<UserRole> UserRoles { get; set; }
+        public IEnumerable<UserRoleViewModel> UserRoles { get; set; }
     }
 }

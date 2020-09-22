@@ -1,42 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using Blazor.Shared;
-using Blazor.Shared.DTOs;
+using InvilliaDDD.Core.ViewModels;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
 namespace Blazor.Server.Services
 {
-    public class GameDataService: IGameDataService
+    public class GameDataService : IGameDataService
     {
         private readonly HttpClient _httpClient;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public GameDataService(HttpClient httpClient)
+        public GameDataService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClient ??
+                throw new System.ArgumentNullException(nameof(httpClient));
+            _httpContextAccessor = httpContextAccessor ??
+                throw new System.ArgumentNullException(nameof(httpContextAccessor));
+            SetupToken();
         }
 
-        public async Task<List<GameDTO>> GetAllGames()
+        public async Task<List<GameViewModel>> GetAllGames()
         {
             var responseMessage = await _httpClient.GetAsync($"api/Games");
             HandleResponseCode((int)responseMessage.StatusCode);
 
             var json = await responseMessage.Content.ReadAsStringAsync();
-            return await Task.Run(() => JsonConvert.DeserializeObject<List<GameDTO>>(json));
+            return await Task.Run(() => JsonConvert.DeserializeObject<List<GameViewModel>>(json));
         }
 
-        public async Task<GameDTO> GetGameDetails(Guid gameId)
+        public async Task<GameViewModel> GetGameDetails(Guid gameId)
         {
             var responseMessage = await _httpClient.GetAsync($"api/Games/{gameId}");
             HandleResponseCode((int)responseMessage.StatusCode);
 
             var json = await responseMessage.Content.ReadAsStringAsync();
-            return await Task.Run(() => Newtonsoft.Json.JsonConvert.DeserializeObject<GameDTO>(json));
+            return await Task.Run(() => Newtonsoft.Json.JsonConvert.DeserializeObject<GameViewModel>(json));
         }
 
-        public async Task<Guid> AddGame(GameDTO game)
+        public async Task<Guid> AddGame(GameViewModel game)
         {
 
             var serializedGame = JsonConvert.SerializeObject(game);
@@ -70,5 +77,15 @@ namespace Blazor.Server.Services
                     throw new Exception(message: "Server Error!");
             }
         }
+
+        private void SetupToken()
+        {
+            var accessToken = _httpContextAccessor.HttpContext.GetTokenAsync("access_token").Result;
+            if (accessToken != null)
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", accessToken);
+            }
+        }
+
     }
 }

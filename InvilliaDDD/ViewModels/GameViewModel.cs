@@ -4,9 +4,9 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace InvilliaDDD.GameManager.Application.ViewModels
+namespace InvilliaDDD.Core.ViewModels
 {
-    public class FriendViewModel
+    public class GameViewModel
     {
         [Key]
         public Guid Id { get; set; }
@@ -15,5 +15,7 @@ namespace InvilliaDDD.GameManager.Application.ViewModels
         [MinLength(2)]
         [MaxLength(100)]
         public string Name { get; set; }
+
+        public bool? Borrowed { get; set;}
     }
 }

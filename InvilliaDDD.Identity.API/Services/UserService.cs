@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using InvilliaDDD.Core.ViewModels;
 using InvilliaDDD.Identity.API.Data.Interfaces;
 using InvilliaDDD.Identity.API.Entities;
 using InvilliaDDD.Identity.API.Helpers;
@@ -20,7 +21,7 @@ namespace InvilliaDDD.Identity.API.Services
 {
     public interface IUserService
     {
-        Task<UserAuthModel> Login(string username, string password);
+        Task<UserAuthViewModel> Login(string username, string password);
         TokenModel Authentication();
         Task Register(User user, bool adminRole);
     }
@@ -52,7 +53,7 @@ namespace InvilliaDDD.Identity.API.Services
             await _rw.User.UpdateUserAsync(user);
         }
 
-        public async Task<UserAuthModel> Login(string username, string password)
+        public async Task<UserAuthViewModel> Login(string username, string password)
         {
             password = SecurePasswordHasher.Hash(password, Encoding.ASCII.GetBytes(_appSettings.Salt));
 
@@ -82,7 +83,7 @@ namespace InvilliaDDD.Identity.API.Services
             tokenDescriptor.Subject = new ClaimsIdentity(identity);
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            var resultUser = _mapper.Map<User, UserAuthModel>(user);
+            var resultUser = _mapper.Map<User, UserAuthViewModel>(user);
             resultUser.Token = tokenHandler.WriteToken(token);
 
             return resultUser;

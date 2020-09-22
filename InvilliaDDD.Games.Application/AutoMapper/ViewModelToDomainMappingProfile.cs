@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using InvilliaDDD.GameManager.Application.ViewModels;
+using InvilliaDDD.Core.ViewModels;
 using InvilliaDDD.GameManager.Domain.Commands.Friends;
 using InvilliaDDD.GameManager.Domain.Commands.Games;
 

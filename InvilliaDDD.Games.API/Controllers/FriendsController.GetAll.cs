@@ -1,4 +1,4 @@
-﻿using InvilliaDDD.GameManager.Application.ViewModels;
+﻿using InvilliaDDD.Core.ViewModels;
 using InvilliaDDD.WebApi.Core.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

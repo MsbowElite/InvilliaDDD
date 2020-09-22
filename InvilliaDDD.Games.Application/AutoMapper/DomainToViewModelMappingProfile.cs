@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using InvilliaDDD.GameManager.Application.ViewModels;
+using InvilliaDDD.Core.ViewModels;
 using InvilliaDDD.GameManager.Domain.Entities;
 
 namespace InvilliaDDD.GameManager.Application.AutoMapper

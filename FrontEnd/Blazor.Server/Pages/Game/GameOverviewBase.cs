@@ -3,8 +3,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Blazor.Server.Services;
-using Blazor.Shared;
-using Blazor.Shared.DTOs;
+using InvilliaDDD.Core.ViewModels;
 using Microsoft.AspNetCore.Components;
 
 namespace Blazor.Server.Pages
@@ -17,7 +16,7 @@ namespace Blazor.Server.Pages
         [Inject]
         public IGameDataService GameDataService { get; set; }
 
-        public List<GameDTO> Games { get; set; }
+        public List<GameViewModel> Games { get; set; }
 
         protected override async Task OnInitializedAsync()
         {

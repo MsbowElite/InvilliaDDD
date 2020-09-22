@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentValidation.Results;
-using InvilliaDDD.GameManager.Application.ViewModels;
+using InvilliaDDD.Core.ViewModels;
 
 namespace InvilliaDDD.GameManager.Application.Interfaces
 {

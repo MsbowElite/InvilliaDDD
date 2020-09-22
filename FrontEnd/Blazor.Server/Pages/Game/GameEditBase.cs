@@ -4,9 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Blazor.Server.Services;
-using Blazor.Shared;
-using Blazor.Shared.DTOs;
 using FluentValidation;
+using InvilliaDDD.Core.ViewModels;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.JSInterop;
@@ -23,7 +22,7 @@ namespace Blazor.Server.Pages
         [Parameter]
         public string GameId { get; set; }
 
-        public GameDTO Game { get; set; } = new GameDTO();
+        public GameViewModel Game { get; set; } = new GameViewModel();
 
         //needed to bind to select to value
         protected string CountryId = string.Empty;

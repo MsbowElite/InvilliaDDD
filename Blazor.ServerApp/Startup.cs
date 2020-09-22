@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Blazor.Server.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Blazor.ServerApp
 {
@@ -27,10 +29,23 @@ namespace Blazor.ServerApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddServerSideBlazor();
+
+            services.AddServerSideBlazor().AddCircuitOptions(options =>
+            { options.DetailedErrors = true; });
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
+
             services.AddHttpClient<IGameDataService, GameDataService>(client =>
             {
                 client.BaseAddress = new Uri("http://invilliaddd.gamemanager.api/");
+            });
+
+            services.AddHttpClient<IGameDataService, GameDataService>(client =>
+            {
+                client.BaseAddress = new Uri("http://invilliaddd.identity.api/");
             });
         }
 
@@ -52,6 +67,9 @@ namespace Blazor.ServerApp
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
