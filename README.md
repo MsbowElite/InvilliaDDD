@@ -1,6 +1,11 @@
 # DDD project
 crqs, repository, dependency injection, clean, solid, docker compose.
 
+# Front-End(Em desenvolvimento)
+
+Autenticação\
+Criação de telas
+
 # Database Sql Server EntityFramework Commands
 Projeto seguiu metodologia de DATABASE FIRST
 
@@ -15,5 +20,8 @@ RabbitMQ\
 Refazer toda estrutura de autenticação\
 Http actions filter\
 Http throttling\
+Encapsular BaseRepository para o CORE\
 Tratamento de mensagens de erro\
 Tratar erros adversos
+Adicinar FK User para Friends e Games, assim podendo ser um sistema multi-usuario\
+  sendo que cada um terá acesso limitado ao que o próprio criou
