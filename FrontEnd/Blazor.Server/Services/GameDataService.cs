@@ -43,7 +43,7 @@ namespace Blazor.Server.Services
             return await Task.Run(() => Newtonsoft.Json.JsonConvert.DeserializeObject<GameViewModel>(json));
         }
 
-        public async Task<Guid> AddGame(GameViewModel game)
+        public async Task<bool> AddGame(GameViewModel game)
         {
 
             var serializedGame = JsonConvert.SerializeObject(game);
@@ -52,11 +52,10 @@ namespace Blazor.Server.Services
 
             if (response.IsSuccessStatusCode)
             {
-                var json = await response.Content.ReadAsStringAsync();
-                return await Task.Run(() => JsonConvert.DeserializeObject<Guid>(json));
+                return true;
             }
 
-            return Guid.Empty;
+            return false;
         }
 
         public async Task DeleteGame(Guid gameId)

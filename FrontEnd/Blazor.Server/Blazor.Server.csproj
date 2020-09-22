@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Blazor.ComponentsLibrary\Blazor.ComponentsLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Login\" />
+  </ItemGroup>
+
 </Project>

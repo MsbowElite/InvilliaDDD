@@ -51,8 +51,7 @@ namespace Blazor.Server.Pages
         {
             if (Game.Id == Guid.Empty) //new
             {
-                var addedGame = await GameDataService.AddGame(Game);
-                if (addedGame != Guid.Empty)
+                if (await GameDataService.AddGame(Game))
                 {
                     StatusClass = "alert-success";
                     Message = "New Game added successfully.";

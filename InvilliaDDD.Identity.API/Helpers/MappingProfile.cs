@@ -8,8 +8,8 @@ namespace InvilliaDDD.Identity.API.Helpers
     {
         public MappingProfile()
         {
-            CreateMap<UserModel, Entities.User>(MemberList.Source);
-            CreateMap<Entities.User, UserModel>().ForMember(dest => dest.Password, opt => opt.Ignore());
+            CreateMap<UserViewModel, Entities.User>(MemberList.Source);
+            CreateMap<Entities.User, UserViewModel>().ForMember(dest => dest.Password, opt => opt.Ignore());
             CreateMap<Entities.User, UserAuthViewModel>(MemberList.Source);
             CreateMap<Entities.UserRoles, UserRoleViewModel>(MemberList.Source);
         }

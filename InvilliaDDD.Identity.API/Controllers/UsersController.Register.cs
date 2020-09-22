@@ -1,4 +1,5 @@
-﻿using InvilliaDDD.Identity.API.Models;
+﻿using InvilliaDDD.Core.ViewModels;
+using InvilliaDDD.Identity.API.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -11,14 +12,14 @@ namespace InvilliaDDD.Identity.API.Controllers
 {
     public partial class UsersController
     {
-        [ProducesResponseType(typeof(UserModel), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(UserViewModel), StatusCodes.Status201Created)]
         [HttpPost("Register")]
-        public async Task<IActionResult> Register([FromBody] UserRegisterModel user)
+        public async Task<IActionResult> Register([FromBody] UserRegisterViewModel user)
         {
             if (!ModelState.IsValid) return BadRequest();
             try
             {
-                var userMap = _mapper.Map<UserModel, Entities.User>(user);
+                var userMap = _mapper.Map<UserViewModel, Entities.User>(user);
                 await _userService.Register(userMap, user.AdminRole);
                 return CreatedAtAction(nameof(Login), user);
             }

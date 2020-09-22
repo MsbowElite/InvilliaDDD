@@ -22,7 +22,7 @@ namespace InvilliaDDD.Identity.API.Controllers
             try
             {
                 var users = await _rw.User.GetUsersAsync();
-                var usersMap = _mapper.Map<IEnumerable<Entities.User>, IEnumerable<Models.UserModel>>(users);
+                var usersMap = _mapper.Map<IEnumerable<Entities.User>, IEnumerable<UserViewModel>>(users);
                 return Ok(usersMap);
             }
             catch (Exception ex)

@@ -15,7 +15,7 @@ namespace InvilliaDDD.Identity.API.Controllers
         [HttpPost("Login")]
         [ProducesResponseType(typeof(UserAuthViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Login([FromBody] UserModel userParam)
+        public async Task<IActionResult> Login([FromBody] UserViewModel userParam)
         {
             if (!ModelState.IsValid) return BadRequest();
             try

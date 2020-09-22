@@ -43,7 +43,7 @@ namespace Blazor.ServerApp
                 client.BaseAddress = new Uri("http://invilliaddd.gamemanager.api/");
             });
 
-            services.AddHttpClient<IGameDataService, GameDataService>(client =>
+            services.AddHttpClient<IIdentityDataService, IdentityDataService>(client =>
             {
                 client.BaseAddress = new Uri("http://invilliaddd.identity.api/");
             });

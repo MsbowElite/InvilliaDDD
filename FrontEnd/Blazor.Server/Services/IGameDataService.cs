@@ -9,7 +9,7 @@ namespace Blazor.Server.Services
     {
         Task<List<GameViewModel>> GetAllGames();
         Task<GameViewModel> GetGameDetails(Guid gameId);
-        Task<Guid> AddGame(GameViewModel game);
+        Task<bool> AddGame(GameViewModel game);
         Task DeleteGame(Guid gameId);
     }
 }
