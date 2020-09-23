@@ -1,0 +1,41 @@
+﻿@page "/register"
+@page "/register/{UserId}"
+@using InvilliaDDD.Core.ViewModels
+@inherits RegisterBase
+
+<section class="employee-edit">
+    @if (!Saved)
+    {
+    <EditForm Model="@User" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="form-group row">
+            <label for="username" class="col-sm-3">Username: </label>
+            <InputText id="username" class="form-control col-sm-8" @bind-Value="@User.Username" placeholder="Enter username" @ref="UsernameInputText"></InputText>
+            <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => User.Username)" />
+        </div>
+        <div class="form-group row">
+            <label for="password" class="col-sm-3">Password: </label>
+            <InputText id="password" class="form-control col-sm-8" @bind-Value="@User.Password" placeholder="Enter password"></InputText>
+            <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => User.Password)" />
+        </div>
+
+        <div class="form-group row">
+            <label for="admin" class="col-sm-3">Is Admin?: </label>
+            <input type="checkbox" @bind="@User.AdminRole">
+            <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => User.AdminRole)" />
+        </div>        
+
+        <button type="submit" class="btn btn-primary edit-btn">Register</button>
+        <a class="btn btn-outline-primary edit-outline-btn" @onclick="@NavigateToOverview">Cancel</a>
+    </EditForm>
+
+    }
+    else
+    {
+        <div class="alert @StatusClass">@Message</div>
+        <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to homepage</a>
+
+    }
+</section>

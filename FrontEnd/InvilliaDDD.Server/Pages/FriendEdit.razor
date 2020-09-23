@@ -1,0 +1,40 @@
+﻿@page "/friendedit"
+@page "/friendedit/{FriendId}"
+@using InvilliaDDD.Core.ViewModels
+@inherits FriendEditBase
+
+<section class="employee-edit">
+    @if (!Saved)
+    {
+        <h1 class="page-title">Details for @Friend.Name</h1>
+
+        <EditForm Model="@Friend" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="form-group row">
+                <label for="lastName" class="col-sm-3">Last name: </label>
+                @*<input id="lastName" class="form-control col-sm-8" @bind-value="Employee.LastName" placeholder="Enter last name" />*@
+
+                <InputText id="lastName" class="form-control col-sm-8" @bind-Value="@Friend.Name"  placeholder="Enter last name" @ref="NameInputText"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Friend.Name)" />
+            </div>
+
+            <button type="submit" class="btn btn-primary edit-btn">Save employee</button>
+            <a class="btn btn-outline-primary edit-outline-btn" @onclick="@NavigateToOverview">Cancel</a>
+            @if (Friend.Id != Guid.Empty)
+            {
+                <a class="btn btn-danger" @onclick="@DeleteFriend">
+                    Delete
+                </a>
+            }
+        </EditForm>
+
+    }
+    else
+    {
+        <div class="alert @StatusClass">@Message</div>
+        <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to overview</a>
+
+    }
+</section>

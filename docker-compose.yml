@@ -1,24 +1,24 @@
 version: '3.4'
 
 services:
-  blazor.serverapp:
-    image: ${DOCKER_REGISTRY-}blazorserverapp
+  invilliaddd.server:
+    image: ${DOCKER_REGISTRY-}invilliadddserver
     build:
       context: .
-      dockerfile: Blazor.ServerApp\Dockerfile
-
-  invilliaddd.identity.api:
-    image: ${DOCKER_REGISTRY-}invilliadddidentityapi
-    build:
-      context: .
-      dockerfile: InvilliaDDD.Identity.API\Dockerfile
-
+      dockerfile: FrontEnd\InvilliaDDD.Server\Dockerfile
 
   invilliaddd.gamemanager.api:
     image: ${DOCKER_REGISTRY-}invilliadddgamemanagerapi
     build:
       context: .
       dockerfile: InvilliaDDD.Games.API\Dockerfile
+
+
+  invilliaddd.identity.api:
+    image: ${DOCKER_REGISTRY-}invilliadddidentityapi
+    build:
+      context: .
+      dockerfile: InvilliaDDD.Identity.API\Dockerfile
 
   invilliaddd.sqlserver:
     container_name: sqlserver
@@ -28,3 +28,4 @@ services:
     environment:
       SA_PASSWORD: "Insecure!12345"
       ACCEPT_EULA: "Y"
+

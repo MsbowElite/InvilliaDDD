@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace InvilliaDDD.Identity.API.Models
+namespace InvilliaDDD.Core.ViewModels
 {
-    public class UserModel
+    public class UserViewModel
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }
