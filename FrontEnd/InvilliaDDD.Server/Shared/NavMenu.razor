@@ -1,7 +1,7 @@
 ﻿
 <div class="bg-light" id="sidebar-wrapper">
     <div class="sidebar-logo">
-        <h1>GameManager</h1>
+        <h3>GameManager</h3>
     </div>
     <div class="menu list-group list-group-flush">
         <AuthorizeView>
@@ -19,10 +19,18 @@
                     <span class="oi oi-list-rich" aria-hidden="true"></span> Add new friend
                 </NavLink>
                 <NavLink class="list-group-item list-group-item-action bg-light"
+                         href="/gameoverview">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Games
+                </NavLink>
+                <NavLink class="list-group-item list-group-item-action bg-light"
+                         href="/gameedit">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Add new game
+                </NavLink>
+                <NavLink class="list-group-item list-group-item-action bg-light"
                          href="Logout">
-                    <span class="oi oi-list-rich" aria-hidden="true"></span> Log out 
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Log out
                     (@context.User.Claims.FirstOrDefault(c => c.Type
-                    == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value)
+                   == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value)
                 </NavLink>
             </Authorized>
             <NotAuthorized>

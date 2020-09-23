@@ -8,6 +8,9 @@ namespace InvilliaDDD.Server.Services
     public interface IGameDataService
     {
         Task<IEnumerable<GameViewModel>> GetAllGames();
-        Task<GameViewModel> GetGameById(Guid gameId);
+        Task<GameViewModel> GetGameDetails(Guid gameId);
+        Task<bool> AddGame(GameViewModel game);
+        Task UpdateGame(GameViewModel game);
+        Task DeleteGame(Guid gameId);
     }
 }

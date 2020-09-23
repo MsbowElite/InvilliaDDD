@@ -11,6 +11,6 @@ namespace InvilliaDDD.Server.Services
         Task<FriendViewModel> GetFriendDetails(Guid friendId);
         Task<bool> AddFriend(FriendViewModel friend);
         Task UpdateFriend(FriendViewModel friend);
-        Task DeleteFriend(Guid employeeId);
+        Task DeleteFriend(Guid friendId);
     }
 }
