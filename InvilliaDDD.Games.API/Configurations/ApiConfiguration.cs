@@ -17,6 +17,7 @@ namespace InvilliaDDD.GameManager.API.Configurations
                 options.UseSqlServer(configuration.GetConnectionString("DockerDbConnection")));
 
             services.AddControllers();
+            services.AddHealthChecks();
 
             services.AddMvc()
                 .AddMvcOptions(options =>
@@ -49,6 +50,7 @@ namespace InvilliaDDD.GameManager.API.Configurations
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHealthChecks("/healthcheck");
                 endpoints.MapControllers();
             });
         }

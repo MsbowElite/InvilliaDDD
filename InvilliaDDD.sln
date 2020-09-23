@@ -44,6 +44,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvilliaDDD.Server", "Front
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6C609477-A004-4708-AC1C-4E8C4B19C3F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvilliaDDD.GameManager.API.IntegrationTests", "InvilliaDDD.GameManager.API.IntegrationTests\InvilliaDDD.GameManager.API.IntegrationTests.csproj", "{ABD13EF8-3BC2-4541-9BED-CA6E1ABA3DAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +92,10 @@ Global
 		{6C609477-A004-4708-AC1C-4E8C4B19C3F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C609477-A004-4708-AC1C-4E8C4B19C3F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C609477-A004-4708-AC1C-4E8C4B19C3F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABD13EF8-3BC2-4541-9BED-CA6E1ABA3DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABD13EF8-3BC2-4541-9BED-CA6E1ABA3DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABD13EF8-3BC2-4541-9BED-CA6E1ABA3DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABD13EF8-3BC2-4541-9BED-CA6E1ABA3DAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,6 +117,7 @@ Global
 		{2E7435DA-347C-4253-A2C0-DAA059F7F8DF} = {F3665936-FF2A-4A5F-BE1E-D526BB77067A}
 		{06E86AFF-CDDB-4B2A-9396-894BF03AF4FA} = {A352B759-B49F-4AE3-AB81-CF228C0661C2}
 		{DF62151E-3592-4F56-A33F-5FB73F9CB4C6} = {06E86AFF-CDDB-4B2A-9396-894BF03AF4FA}
+		{ABD13EF8-3BC2-4541-9BED-CA6E1ABA3DAE} = {BBA598CB-C323-4681-9101-BCD7677998DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7C3BECA9-04C6-43EA-A740-C20AF1AF7F2F}
