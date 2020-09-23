@@ -33,9 +33,9 @@ namespace InvilliaDDD.GameManager.Application.Services
         }
 
 
-        public async Task<GameViewModel> GetById(Guid id)
+        public async Task<GameDetailViewModel> GetById(Guid id)
         {
-            return _mapper.Map<GameViewModel>(await _gameRepository.GetById(id));
+            return _mapper.Map<GameDetailViewModel>(await _gameRepository.GetById(id));
         }
 
         public async Task<ValidationResult> Register(GameViewModel gameViewModel)

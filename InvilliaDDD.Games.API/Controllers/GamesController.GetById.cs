@@ -12,7 +12,7 @@ namespace InvilliaDDD.GameManager.API.Controllers
     public partial class GamesController
     {
         [HttpGet("{id}")]
-        public async Task<GameViewModel> Get(Guid id)
+        public async Task<GameDetailViewModel> Get(Guid id)
         {
             return await _gameAppService.GetById(id);
         }

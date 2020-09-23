@@ -26,7 +26,9 @@ namespace InvilliaDDD.GameManager.Data.Repository
 
         public async Task<Game> GetById(Guid id)
         {
-            return await FindByCondition(f => f.Id == id).SingleOrDefaultAsync();
+            return await FindByCondition(f => f.Id == id)
+                .Include(g => g.GameBorrowed)
+                .Include(g => g.GameBorrowed.Friend).SingleOrDefaultAsync();
         }
 
         public void Add(Game game)

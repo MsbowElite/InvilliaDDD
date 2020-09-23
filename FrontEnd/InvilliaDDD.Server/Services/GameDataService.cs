@@ -32,13 +32,13 @@ namespace InvilliaDDD.Server.Services
                 (await _httpClient.GetStreamAsync($"api/Games"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
-        public async Task<GameViewModel> GetGameDetails(Guid gameId)
+        public async Task<GameDetailViewModel> GetGameDetails(Guid gameId)
         {
-            return await JsonSerializer.DeserializeAsync<GameViewModel>
-                (await _httpClient.GetStreamAsync($"api/country{gameId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            return await JsonSerializer.DeserializeAsync<GameDetailViewModel>
+                (await _httpClient.GetStreamAsync($"api/Games/{gameId}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
 
-        public async Task<bool> AddGame(GameViewModel game)
+        public async Task<bool> AddGame(GameDetailViewModel game)
         {
             var gameJson =
                 new StringContent(JsonSerializer.Serialize(game), Encoding.UTF8, "application/json");
@@ -53,7 +53,31 @@ namespace InvilliaDDD.Server.Services
             return false;
         }
 
-        public async Task UpdateGame(GameViewModel game)
+        public async Task<bool> LendGame(Guid gameId, Guid friendId)
+        {
+            var response = await _httpClient.PostAsync($"api/Games/{gameId}/Friends/{friendId}", null);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> TakeGame(Guid gameId)
+        {
+            var response = await _httpClient.DeleteAsync($"api/Games/{gameId}/Friends");
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task UpdateGame(GameDetailViewModel game)
         {
             var gameJson =
                 new StringContent(JsonSerializer.Serialize(game), Encoding.UTF8, "application/json");

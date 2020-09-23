@@ -18,15 +18,11 @@ namespace InvilliaDDD.Server.Pages
         public NavigationManager NavigationManager { get; set; }
 
         [Parameter]
-        public Guid GameId { get; set; }
+        public string GameId { get; set; }
 
         public InputText NameInputText { get; set; }
 
-        public GameViewModel Game { get; set; } = new GameViewModel();
-
-        //needed to bind to select to value
-        protected string CountryId = string.Empty;
-        protected string JobCategoryId = string.Empty;
+        public GameDetailViewModel Game { get; set; } = new GameDetailViewModel();
 
         //used to store state of screen
         protected string Message = string.Empty;
@@ -37,14 +33,14 @@ namespace InvilliaDDD.Server.Pages
         {
             Saved = false;
 
-            if (GameId == Guid.Empty)
+            if (string.IsNullOrEmpty(GameId))
             {
                 //add some defaults
-                Game = new GameViewModel { Name = "Zezinho" };
+                Game = new GameDetailViewModel();
             }
             else
             {
-                Game = await GameDataService.GetGameDetails(GameId);
+                Game = await GameDataService.GetGameDetails(new Guid(GameId));
             }
         }
 
@@ -52,8 +48,7 @@ namespace InvilliaDDD.Server.Pages
         {
             if (Game.Id == Guid.Empty) //new
             {
-                var addedGame = await GameDataService.AddGame(Game);
-                if (addedGame != null)
+                if (await GameDataService.AddGame(Game))
                 {
                     StatusClass = "alert-success";
                     Message = "New game added successfully.";

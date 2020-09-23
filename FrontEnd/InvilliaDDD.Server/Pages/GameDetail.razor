@@ -2,6 +2,47 @@
 @page "/gamedetail/{GameId}"
 @inherits GameDetailBase
 
-<section class="employee-detail">
-    <h1 class="page-title">Details for @Game.Name</h1>
-</section>
+    <section class="employee-detail">
+        <h1 class="page-title">Details for @Game.Name</h1>
+        @if (!Saved)
+        {
+            @if (!string.IsNullOrEmpty(Game.BorrowedFriendName))
+            {
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Friend Name</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@Game.BorrowedFriendName</label>
+                    </div>
+                </div>
+                <EditForm Model="Game" OnSubmit="@HandleTakeGameBackSubmit">
+                    <button type="submit" class="btn btn-danger">Take Back</button>
+                </EditForm>
+            }
+            else
+            {
+                <EditForm Model="Game" OnSubmit="@HandleLendGameSubmit">
+                    <div class="form-group row">
+                        <label for="country" class="col-sm-3">Lend to: </label>
+                        <InputSelect id="country" class="form-control col-sm-8" @bind-Value="@FriendId">
+                            @foreach (var friend in Friends)
+                                    {
+                                <option value="@friend.Id">@friend.Name</option>
+                                    }
+                            /**/
+                            /**/
+                            /**/
+                            /**/
+                            /**/
+                        </InputSelect>
+                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Game.BorrowedFriendName)" />
+                    </div>
+                    <button type="submit" class="btn btn-primary edit-btn">Lend</button>
+                </EditForm>
+            }
+        }
+        else
+        {
+            <div class="alert @StatusClass">@Message</div>
+            <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to overview</a>
+        }
+    </section>

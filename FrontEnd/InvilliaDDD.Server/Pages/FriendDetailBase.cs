@@ -13,13 +13,13 @@ namespace InvilliaDDD.Server.Pages
         public IFriendDataService FriendDataService { get; set; }
 
         [Parameter]
-        public Guid FriendId { get; set; }
+        public string FriendId { get; set; }
        
         public FriendViewModel Friend { get; set; } = new FriendViewModel();
 
         protected override async Task OnInitializedAsync()
         {
-            Friend = await FriendDataService.GetFriendDetails(FriendId);
+            Friend = await FriendDataService.GetFriendDetails(new Guid(FriendId));
         }
     }
 }

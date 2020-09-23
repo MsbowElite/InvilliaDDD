@@ -2,7 +2,7 @@
 @inherits GameOverviewBase
 @attribute [Authorize]
 
-<h1 class="page-title">All employees</h1>
+<h1 class="page-title">All games</h1>
 
 @if (Games == null)
 {
@@ -13,25 +13,26 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th></th>
                 <th>Name</th>
+                <th>Lent to a friend</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var game in Games)
             {
-                <tr>
-                    <td>@game.Name</td>
-                    <td>
-                        <a href="@($"gamedetail/{game.Id}")" class="btn btn-primary table-btn">
-                            <i class="fas fa-info-circle"></i>
-                        </a>
-                        <a href="@($"gameedit/{game.Id}")" class="btn btn-primary table-btn">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                    </td>
-                </tr>
+            <tr>
+                <td>@game.Name</td>
+                <td>@game.Borrowed</td>
+                <td>
+                    <a href="@($"gamedetail/{game.Id}")" class="btn btn-primary table-btn">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                    <a href="@($"gameedit/{game.Id}")" class="btn btn-primary table-btn">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

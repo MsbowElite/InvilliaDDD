@@ -18,7 +18,7 @@ namespace InvilliaDDD.Server.Pages
         public NavigationManager NavigationManager { get; set; }
 
         [Parameter]
-        public Guid FriendId { get; set; }
+        public string FriendId { get; set; }
 
         public InputText NameInputText { get; set; }
 
@@ -37,14 +37,14 @@ namespace InvilliaDDD.Server.Pages
         {
             Saved = false;
 
-            if (FriendId == Guid.Empty)
+            if (string.IsNullOrEmpty(FriendId))
             {
                 //add some defaults
-                Friend = new FriendViewModel { Name = "Zezinho" };
+                Friend = new FriendViewModel();
             }
             else
             {
-                Friend = await FriendDataService.GetFriendDetails(FriendId);
+                Friend = await FriendDataService.GetFriendDetails(new Guid(FriendId));
             }
         }
 
@@ -52,8 +52,7 @@ namespace InvilliaDDD.Server.Pages
         {
             if (Friend.Id == Guid.Empty) //new
             {
-                var addedFriend = await FriendDataService.AddFriend(Friend);
-                if (addedFriend != null)
+                if (await FriendDataService.AddFriend(Friend))
                 {
                     StatusClass = "alert-success";
                     Message = "New friend added successfully.";

@@ -10,7 +10,7 @@ namespace InvilliaDDD.Server.Components
     {
         public bool ShowDialog { get; set; }
 
-        public GameViewModel Game { get; set; } = new GameViewModel { Name = "Name" };
+        public GameDetailViewModel Game { get; set; } = new GameDetailViewModel();
 
         [Parameter]
         public EventCallback<bool> CloseEventCallback { get; set; }
@@ -27,7 +27,7 @@ namespace InvilliaDDD.Server.Components
 
         private void ResetDialog()
         {
-            Game = new GameViewModel { Name = "Name" };
+            Game = new GameDetailViewModel();
         }
 
         public void Close()
